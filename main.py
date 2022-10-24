@@ -1,9 +1,11 @@
 from tkinter import *
 from tkinter.ttk import Combobox, Checkbutton, Progressbar
 from tkinter import ttk
+import threading
+import time
 window = Tk()
 window.title("Welcome to app")
-window.geometry('450x300')
+window.geometry('600x300')
 
 def clicked():
     # res = f"Hello, {combo.get()}"
@@ -40,11 +42,15 @@ rad3.grid(column=2, row=20)
 
 style = ttk.Style()
 style.theme_use('default')
-style.configure('red.Horizontal.TProgresbar', background='red')
-bar = Progressbar(window, length=200, style='red.Horizontal.TProgresbar')
-bar.pack()
+style.configure('red.Horizontal.TProgressbar', background='red')
+bar = Progressbar(window, length=300, style='red.Horizontal.TProgressbar')
 bar.grid(column=0, row=30)
 
+def progress():
+    while bar['value'] < 100:
+        bar['value'] += 1
+        time.sleep(.2)
 
 
+threading.Thread(target=progress).start()
 window.mainloop()
