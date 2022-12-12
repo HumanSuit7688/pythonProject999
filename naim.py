@@ -13,7 +13,7 @@ with window(label='Window', width=600, height=400):
     add_slider_float(label='float', default_value=0.5, max_value=1)
     add_menu(label='Langage')
     add_table(label='Users', width=100, height=75)
-
+    add_3d_slider(label = "3D", width= 300, height= 200)
 setup_dearpygui()
 show_viewport()
 start_dearpygui()
